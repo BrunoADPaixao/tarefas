@@ -90,6 +90,11 @@ export default class Agenda extends Component {
             this.filterTasks)
     }
 
+    deleteTask = id => {
+        const tasks = this.state.tasks.filter(task => task.id !== id) // retorna apenas as tasks com id diferente do id recebido na função
+        this.setState({ tasks }, this.filterTasks)
+    }
+
     filterTasks = () => { // funcao para filtrar tarefas pendentes ou todas as tarefas
         let visibleTasks = null
         if (this.state.showDoneTasks){
@@ -158,7 +163,7 @@ export default class Agenda extends Component {
                    <FlatList data={this.state.visibleTasks} 
                         keyExtractor={item => `${item.id}`}
                         renderItem={({ item }) => 
-                        <Tarefa {...item} toggleTarefa={this.toggleTarefa} />}
+                        <Tarefa {...item} toggleTarefa={this.toggleTarefa} onDelete={this.deleteTask} />}
                    />
                 </View>
                 <ActionButton buttonColor={commonStyles.colors.today}

@@ -78,7 +78,7 @@ export default class AddTask extends Component {
                     {datePicker}
 
                     <View style={{
-                        FlexDirection: 'row', 
+                        flexDirection: 'row', 
                         justifyContent: 'flex-end'
                     }}>
                         <TouchableOpacity onPress={ this.props.onCancel } >
